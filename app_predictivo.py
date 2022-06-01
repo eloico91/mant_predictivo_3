@@ -22,7 +22,7 @@ with st.sidebar:
     campaña = st.selectbox('Tipo de campaña', ['Esparrago','Judia'])
     vel_prod = st.slider("Velocidad (Tarros/hora)", 1, 10000)
     turnos = st.radio( "Turnos de producción",('1', '2', '3'))
-    volumen = st.number_input("Volumen de producción (kg x dia)", 1, 100000)
+    volumen = st.number_input("Tanda de producción (kg)", 43000, 1000000)
 
 #Valores fijos
     horas_arreglo = 8
@@ -90,14 +90,23 @@ if st.sidebar.button('CLICK PARA CALCULAR'):
     
     st.write('La probabilidad de fallo por avería es de:')
     st_echarts(options=pd_options,width = "85%")
-        
+
+#Calculos
+
+    dias_teoricos =  volumen/(vel_prod * 0.6 * 8 * turnos)
+    dias_retraso = int(dias_teoricos * scoring/100)
+    impacto = int(impacto * 10000/vel_prod)
+
 #kpis
-    col1,col2 = st.columns(2)
+    col1,col2,col3 = st.columns(3)
     with col1:
         st.write('El valor económico del proceso es (Euros):')
         st.metric(label="Valor económico €", value=impacto, delta="- Impacto",delta_color="normal")
     with col2:
         st.write('La pérdida esperada es de (Euros):')
         st.metric(label="Pérdida esperada €", value=perdida, delta="- Pérdida",delta_color="normal")
+    with col3:
+        st.write('Días estimados de retraso:')
+        st.metric(label="Incremento lead time", value=dias_retraso, delta="- Demora",delta_color="normal")
 else:
     st.write('DEFINE LOS PARÁMETROS DE PRODUCCIÓN Y HAZ CLICK EN CALCULAR')
