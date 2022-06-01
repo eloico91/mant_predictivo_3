@@ -1,0 +1,2 @@
+Date,Temperature,Humidity,Operator,Measure1,Measure2,Measure3,Measure4,Measure5,Measure6,Measure7,Measure8,Measure9,Measure10,Measure11,Measure12,Measure13,Measure14,Measure15,Hours Since Previous Failure,Failure,﻿Date.year,﻿Date.month,﻿Date.day-of-month,﻿Date.day-of-week,﻿Date.hour,﻿Date.minute,﻿Date.second
+2016-04-11 01:00:00,71,69,Operator7,1323,2,2,1339,971,507,1098,1117,1224,170,1033,1107,719,715,1617,593,Yes,2016,4,11,1,1,0,0
