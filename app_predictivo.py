@@ -96,6 +96,8 @@ if st.sidebar.button('CLICK PARA CALCULAR'):
     dias_teoricos =  volumen/(vel_prod * 0.6 * 8 * turnos)
     dias_retraso = int(dias_teoricos * scoring/100)
     impacto = int(impacto * 10000/vel_prod)
+    impacto = '{:,.0f} €'.format(impacto).replace(",", "@").replace(".", ",").replace("@", ".")
+    perdida = '{:,.0f} €'.format(perdida).replace(",", "@").replace(".", ",").replace("@", ".")
 
 #kpis
     col1,col2,col3 = st.columns(3)
